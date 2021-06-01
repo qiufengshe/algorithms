@@ -68,9 +68,9 @@ pub fn remove_element(nums: &mut Vec<i32>, val: i32) -> i32 {
     尽量减少操作次数。
 */
 pub fn move_zeroes(nums: &mut Vec<i32>) {
-    let total:usize = nums.len();
-    let mut new_vec:Vec<i32> = Vec::new();
-    let mut index:usize = 0;
+    let total: usize = nums.len();
+    let mut new_vec: Vec<i32> = Vec::new();
+    let mut index: usize = 0;
     while index < total {
         if nums[index] != 0 {
             new_vec.push(nums[index]);
@@ -78,14 +78,11 @@ pub fn move_zeroes(nums: &mut Vec<i32>) {
         index += 1;
     }
 
-    let mut i:usize = 0;
-    while i < index{
-        nums[i] = new_vec[i];
-        i += 1;
+    for (i, item) in new_vec.iter().enumerate() {
+        nums[i] = *item;
     }
 
-    while index < total {
+    for index in new_vec.len()..total {
         nums[index] = 0;
-        index += 1;
     }
 }
